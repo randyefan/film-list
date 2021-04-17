@@ -50,6 +50,71 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		612977CC262AEBC0007F2D58 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				612977CD262AEBD4007F2D58 /* Home */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		612977CD262AEBD4007F2D58 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				612977D0262AEC3F007F2D58 /* View */,
+				612977CF262AEC3A007F2D58 /* Model */,
+				612977CE262AEBF4007F2D58 /* ViewModel */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		612977CE262AEBF4007F2D58 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		612977CF262AEC3A007F2D58 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		612977D0262AEC3F007F2D58 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				619B25DD262AE5F700ADF577 /* ViewController.swift */,
+				619B25DF262AE5F700ADF577 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		612977D1262AEC44007F2D58 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		612977D2262AEC4C007F2D58 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				619B25D9262AE5F700ADF577 /* AppDelegate.swift */,
+				619B25DB262AE5F700ADF577 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		612977D3262AEC63007F2D58 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				619B25E2262AE5F800ADF577 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		619B25CD262AE5F700ADF577 = {
 			isa = PBXGroup;
 			children = (
@@ -71,11 +136,10 @@
 		619B25D8262AE5F700ADF577 /* film-list */ = {
 			isa = PBXGroup;
 			children = (
-				619B25D9262AE5F700ADF577 /* AppDelegate.swift */,
-				619B25DB262AE5F700ADF577 /* SceneDelegate.swift */,
-				619B25DD262AE5F700ADF577 /* ViewController.swift */,
-				619B25DF262AE5F700ADF577 /* Main.storyboard */,
-				619B25E2262AE5F800ADF577 /* Assets.xcassets */,
+				612977D3262AEC63007F2D58 /* Resources */,
+				612977D2262AEC4C007F2D58 /* App */,
+				612977D1262AEC44007F2D58 /* Services */,
+				612977CC262AEBC0007F2D58 /* Module */,
 				619B25E4262AE5F800ADF577 /* LaunchScreen.storyboard */,
 				619B25E7262AE5F800ADF577 /* Info.plist */,
 			);
@@ -88,7 +152,6 @@
 				97A38FCA0D4F2B65AAB07630 /* Pods-film-list.debug.xcconfig */,
 				0BB4BD67CBB11B90A8343C41 /* Pods-film-list.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
