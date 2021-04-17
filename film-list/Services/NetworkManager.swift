@@ -36,7 +36,16 @@ enum APIs: URLRequestConvertible {
     }
     
     func asURLRequest() throws -> URLRequest {
-        let request = URLRequest(url: Self.endpoint!.appendingPathComponent(path))
+        let parameters = [
+            "fields" : "title,description,release_date,director"
+        ]
+        var request = URLRequest(url: Self.endpoint!.appendingPathComponent(path))
+        
+        switch self {
+        case .listFilm:
+            request = try URLEncoding.default.encode(request, with: parameters)
+        }
+        
         return request
     }
 }
