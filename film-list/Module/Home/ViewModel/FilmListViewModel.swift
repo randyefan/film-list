@@ -14,6 +14,7 @@ struct FilmListViewModel {
     private let networkService: NetworkService?
     
     private let _filmList = BehaviorRelay<[FilmViewModel]>(value: [])
+    private let _filmListFilter = BehaviorRelay<[FilmViewModel]>(value: [])
     private let _releaseDate = BehaviorRelay<[Int]>(value: [])
     private let _isFetching = BehaviorRelay<Bool>(value: true)
     private let _error = BehaviorRelay<String?>(value: nil)
@@ -33,6 +34,10 @@ struct FilmListViewModel {
     
     var filmList: Driver<[FilmViewModel]> {
         return _filmList.asDriver()
+    }
+    
+    var filmListFilter: Driver<[FilmViewModel]> {
+        return _filmListFilter.asDriver()
     }
     
     var hasError: Bool {
@@ -62,6 +67,18 @@ struct FilmListViewModel {
             self._releaseDate.accept(releaseDate)
             self._isFetching.accept(false)
         })
+    }
+    
+    func filmByYear(year: String) {
+        self._isFetching.accept(true)
+        
+        let filmList = _filmList.value
+        let filmListFilter = filmList.filter { (film) -> Bool in
+            film.releaseDate == Int(year)
+        }
+        
+        self._filmListFilter.accept(filmListFilter)
+        self._isFetching.accept(false)
     }
     
     
