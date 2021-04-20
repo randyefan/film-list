@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class HomeViewController: UIViewController {
 
@@ -14,7 +16,11 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     private var selectedYear: String?
-    var tes: [String] = ["Tes1", "Tes2", "Tes3", "Tes4", "Tes5"]
+    var viewModel: FilmListViewModel = FilmListViewModel()
+    let disposeBag = DisposeBag()
+    var filmViewModel: [FilmViewModel] = []
+    
+    private var releaseDateRow: [Int] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,11 +28,36 @@ class HomeViewController: UIViewController {
         setupTextField()
         createPickerView()
         dismissPickerView()
+        registerObserver()
+    }
+    
+    private func registerObserver() {
+        viewModel.releaseDate.drive(onNext: { (releaseDate) in
+            self.releaseDateRow = releaseDate
+        }).disposed(by: disposeBag)
+        viewModel.filmList.drive(onNext: { (film) in
+            self.filmViewModel = film
+            self.tableView.reloadData()
+        }).disposed(by: disposeBag)
+        viewModel.isFetching.drive(onNext: { (isFetching) in
+            if isFetching {
+                self.tableView.alpha = 0
+                self.activityIndicator.alpha = 1
+                self.activityIndicator.startAnimating()
+            } else {
+                self.activityIndicator.alpha = 0
+                self.activityIndicator.stopAnimating()
+                self.tableView.alpha = 1
+            }
+        }).disposed(by: disposeBag)
+
     }
     
     private func setupView() {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         tableView.dataSource = self
+        tableView.tableFooterView = UIView()
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.register(UINib(nibName: "FilmTableViewCell", bundle: nil), forCellReuseIdentifier: "filmCell")
     }
     
@@ -61,26 +92,30 @@ extension HomeViewController: UIPickerViewDelegate, UIPickerViewDataSource, UITe
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return tes.count
+        return releaseDateRow.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return tes[row]
+        return String(releaseDateRow[row])
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedYear = tes[row]
+        selectedYear = String(releaseDateRow[row])
         textField.text = selectedYear
     }
 }
 
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        0
+        filmViewModel.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "filmCell", for: indexPath) as? FilmTableViewCell {
+            cell.viewModel = filmViewModel[indexPath.row]
+            return cell
+        }
+        fatalError()
     }
     
     

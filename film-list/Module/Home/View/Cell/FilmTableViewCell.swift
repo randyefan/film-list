@@ -14,6 +14,16 @@ class FilmTableViewCell: UITableViewCell {
     @IBOutlet weak var releaseLabel: UILabel!
     @IBOutlet weak var directorLabel: UILabel!
     
+    var viewModel: FilmViewModel? {
+        didSet {
+            guard let viewModel = viewModel else { return }
+            self.titleLabel.text = viewModel.title
+            self.descriptionLabel.text = viewModel.description
+            self.releaseLabel.text = String(viewModel.releaseDate)
+            self.directorLabel.text = viewModel.director
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
