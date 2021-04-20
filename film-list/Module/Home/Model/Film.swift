@@ -11,13 +11,13 @@ import SwiftyJSON
 struct Film {
     let title: String
     let description: String
-    let releaseYear: String
+    let releaseYear: Int
     let director: String
     
     init(json: JSON) {
         title = json["title"].stringValue
         description = json["description"].stringValue
-        releaseYear = json["release_date"].stringValue
+        releaseYear = json["release_date"].intValue
         director = json["director"].stringValue
     }
 }
