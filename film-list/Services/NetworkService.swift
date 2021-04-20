@@ -50,7 +50,7 @@ enum APIs: URLRequestConvertible {
     }
 }
 
-struct NetworkManager {
+struct NetworkService {
     let jsonDecoder = JSONDecoder()
     
     func getFilm(completion: @escaping(JSON?, APIError?) -> ()) {
