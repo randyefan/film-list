@@ -17,14 +17,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iVi-Ro-jbG">
-                                <rect key="frame" x="0.0" y="130" width="414" height="732"/>
+                                <rect key="frame" x="0.0" y="138" width="414" height="724"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="E7m-vK-XUd">
                                 <rect key="frame" x="197" y="438" width="20" height="20"/>
                             </activityIndicatorView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bI8-pd-iBZ">
-                                <rect key="frame" x="8" y="88" width="398" height="34"/>
+                                <rect key="frame" x="8" y="96" width="398" height="34"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -37,7 +37,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bI8-pd-iBZ" secondAttribute="trailing" constant="8" id="DW3-7v-pg6"/>
                             <constraint firstItem="bI8-pd-iBZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="J8s-PR-aJq"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="iVi-Ro-jbG" secondAttribute="trailing" id="NaS-c7-4Gu"/>
-                            <constraint firstItem="bI8-pd-iBZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ew3-jm-ncP"/>
+                            <constraint firstItem="bI8-pd-iBZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="ew3-jm-ncP"/>
                             <constraint firstItem="iVi-Ro-jbG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fw2-W3-SyD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="iVi-Ro-jbG" secondAttribute="bottom" id="iSc-LS-28t"/>
                             <constraint firstItem="E7m-vK-XUd" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="pYd-AK-Pxx"/>

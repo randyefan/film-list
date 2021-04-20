@@ -54,7 +54,6 @@ class HomeViewController: UIViewController {
     }
     
     private func setupView() {
-        self.navigationController?.navigationBar.prefersLargeTitles = true
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
         tableView.rowHeight = UITableView.automaticDimension
