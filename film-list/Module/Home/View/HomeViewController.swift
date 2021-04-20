@@ -32,25 +32,38 @@ class HomeViewController: UIViewController {
     }
     
     private func registerObserver() {
-        viewModel.releaseDate.drive(onNext: { (releaseDate) in
-            self.releaseDateRow = releaseDate
+        viewModel.releaseDate.drive(onNext: { [weak self] (releaseDate) in
+            self?.releaseDateRow = releaseDate
         }).disposed(by: disposeBag)
-        viewModel.filmList.drive(onNext: { (film) in
-            self.filmViewModel = film
-            self.tableView.reloadData()
+        
+        viewModel.filmList.drive(onNext: { [weak self] (film) in
+            self?.filmViewModel = film
+            self?.tableView.reloadData()
         }).disposed(by: disposeBag)
-        viewModel.isFetching.drive(onNext: { (isFetching) in
+        
+        viewModel.isFetching.drive(onNext: { [weak self] (isFetching) in
             if isFetching {
-                self.tableView.alpha = 0
-                self.activityIndicator.alpha = 1
-                self.activityIndicator.startAnimating()
+                self?.tableView.alpha = 0
+                self?.activityIndicator.alpha = 1
+                self?.activityIndicator.startAnimating()
             } else {
-                self.activityIndicator.alpha = 0
-                self.activityIndicator.stopAnimating()
-                self.tableView.alpha = 1
+                self?.activityIndicator.alpha = 0
+                self?.activityIndicator.stopAnimating()
+                self?.tableView.alpha = 1
             }
         }).disposed(by: disposeBag)
 
+        textField.rx.textInput.text.changed.asObservable().subscribe { [weak self] _ in
+            guard let year = self?.textField.text else { return }
+            if self?.textField.text != "" {
+                self?.viewModel.filmByYear(year: year)
+            }
+        }.disposed(by: disposeBag)
+        
+        viewModel.filmListFilter.drive { [weak self] (film) in
+            self?.filmViewModel = film
+            self?.tableView.reloadData()
+        }.disposed(by: disposeBag)
     }
     
     private func setupView() {
