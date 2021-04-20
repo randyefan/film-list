@@ -86,6 +86,7 @@
 		612977CF262AEC3A007F2D58 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				61AFE920262E8A44007A0C2F /* Film.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -146,7 +147,6 @@
 		619B25D8262AE5F700ADF577 /* film-list */ = {
 			isa = PBXGroup;
 			children = (
-				61AFE91F262E8A32007A0C2F /* Model */,
 				612977D3262AEC63007F2D58 /* Resources */,
 				612977D2262AEC4C007F2D58 /* App */,
 				612977D1262AEC44007F2D58 /* Services */,
@@ -155,14 +155,6 @@
 				619B25E7262AE5F800ADF577 /* Info.plist */,
 			);
 			path = "film-list";
-			sourceTree = "<group>";
-		};
-		61AFE91F262E8A32007A0C2F /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				61AFE920262E8A44007A0C2F /* Film.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		61FD31DA262BD8860011CEB4 /* Cell */ = {
