@@ -16,7 +16,7 @@ struct FilmViewModel {
     }
     
     var description: String {
-        return film.description
+        return film.descriptionLabel
     }
     
     var title: String {
