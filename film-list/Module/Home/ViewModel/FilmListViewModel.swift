@@ -13,11 +13,11 @@ import SwiftyJSON
 struct FilmListViewModel {
     private let networkService: NetworkService?
     
-    private let _filmList = BehaviorRelay<[FilmViewModel]>(value: [])
-    private let _filmListFilter = BehaviorRelay<[FilmViewModel]>(value: [])
-    private let _releaseDate = BehaviorRelay<[Int]>(value: [])
-    private let _isFetching = BehaviorRelay<Bool>(value: true)
-    private let _error = BehaviorRelay<String?>(value: nil)
+    let _filmList = BehaviorRelay<[FilmViewModel]>(value: [])
+    let _filmListFilter = BehaviorRelay<[FilmViewModel]>(value: [])
+    let _releaseDate = BehaviorRelay<[Int]>(value: [])
+    let _isFetching = BehaviorRelay<Bool>(value: true)
+    let _error = BehaviorRelay<String?>(value: nil)
     
     init(networkService: NetworkService = NetworkService()) {
         self.networkService = networkService
